@@ -39,4 +39,4 @@ Dieses Projekt ermöglicht die Verwaltung und Visualisierung von Angriffspfaden.
 2. Öffnen Sie Ihren Webbrowser und gehen Sie auf `http://localhost:5000`, um auf die Weboberfläche zu gelangen.
 
 ## Dokumentation
-Weitere Informationen zur Nutzung des Tools finden Sie in der [Dokumentation](<link-zur-dokumentation>).
+Weitere Informationen zur Nutzung des Tools finden Sie in der [Dokumentation](https://github.com/udoschm/Entwicklung-eines-Tools-f-r-die-Modellierung-eines-Angriffspfades/blob/main/static/Benutzerdokumentation.pdf).
