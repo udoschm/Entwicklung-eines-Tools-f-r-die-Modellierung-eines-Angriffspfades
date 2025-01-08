@@ -1,0 +1,428 @@
+/* Allgemein */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigationsleisten-Stilierung */
+
+.nav-bar {
+    background-color: #007bff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style der Links in der Navigationsleiste */
+
+.nav-bar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Style der Links beim Hover-Effekt */
+
+.nav-bar a:hover {
+    text-decoration: underline;
+}
+
+/* Style section */
+
+.section {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style für aktive Abschnitte */
+
+.section.active {
+    display: block;
+}
+
+/* Style für den Abschnitt "attack-tree-section" */
+
+#attack-tree-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Style für collapsible */
+
+.collapsible {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* collapsible collapsible beim Hover-Effekt */
+
+.collapsible:hover {
+    background-color: #0056b3;
+}
+
+/* Style für den Inhalt von zusammenklappbaren Schaltflächen */
+
+.content {
+    display: none;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Style für Attributpaare */
+
+.attribute-pair {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: auto;
+}
+
+/* Style für Eingabefelder in Attributpaaren */
+
+.attribute-pair input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    flex: 1;
+}
+
+/* Schaltflächen Style */
+
+.attribute-pair button,
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Schaltflächen-Style beim Hover-Effekt */
+
+.attribute-pair button:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Fehlermeldungs-Style */
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Erfolgsmeldungs-Style */
+
+.success {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Info-Meldungs-Style */
+
+.info {
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Eingabefeld-Style */
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Eingabefeld-Style beim Fokus */
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Dropdown-Listen-Style */
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dropdown-Listen-Style beim Fokus */
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Style für Überschriften */
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin: 20px 0;
+    font-size: 2em;
+}
+
+/* Style für Fortschrittsbalken */
+
+#progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: red;
+    transition: width 0.5s;
+}
+
+/* Dropdown-Listen-Style */
+
+select {
+    width: auto;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dropdown-Listen-Style beim Fokus */
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Tabellen-Style */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Style für Tabellenzellen */
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Style für Tabellenüberschriften */
+
+table th {
+    background-color: #f2f2f2;
+}
+
+/* Style für gerade Tabellenzeilen */
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Style für Tabellenzeilen beim Hover-Effekt */
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style für Kippschalter */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Angepasste Breite */
+  height: 20px; /* Angepasste Höhe */
+  margin-right: 10px; /* Abstand zwischen Kippschalter und Beschriftung */
+}
+
+/* Style für das unsichtbare Eingabeelement  Kippschalters */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Style für den Schieberegler des Kippschalters */
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+/* Style für den Schieberegler */
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; /* Angepasste Höhe */
+  width: 16px; /* Angepasste Breite */
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+}
+
+/* Style  Schieberegler */
+Style
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+/* Style  Schieberegler  */
+
+input:checked + .slider:before {
+  transform: translateX(20px); /* Angepasste Verschiebung */
+}
+
+/* Style  Schieberegler */
+
+.slider.round {
+  border-radius: 20px; /* Angepasster Radius */
+}
+
+/* Style  Schieberegler  */
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Style -Beschriftung */
+
+.toggle-label {
+  vertical-align: middle;
+  font-size: 14px; /* Schriftgröße nach Bedarf anpassen */
+}
+
+/* Style für den Nachrichtenabschnitt */
+
+#messages-section {
+    display: block !important;
+}
+
+/* Style für den Abschnitt "attack-tree-section" */
+
+#attack-tree-section {
+    display: flex;
+    flex-direction: column; /* Elemente vertikal stapeln */
+    align-items: flex-start; /* Elemente am Anfang (links) ausrichten */
+    margin: 20px;
+    overflow-x: auto; /* Horizontales Scrollen aktivieren */
+    overflow-y: hidden; /* Vertikales Scrollen deaktivieren */
+    height: auto; /* Höhe an den Inhalt anpassen */
+}
+
+/* Style für Bilder im Abschnitt "attack-tree-section" */
+
+#attack-tree-section img {
+    width: auto; /* Breite des Bildes beibehalten */
+    max-width: none; /* Bild darf die Breite des Containers überschreiten */
+    height: auto; /* Seitenverhältnis beibehalten */
+}
+
+/* Style für Überschriften im Abschnitt "attack-tree-section" */
+
+#attack-tree-section h2 {
+    margin-bottom: 20px; /* Abstand nach unten anpassen */
+}
+
+/* Style für unsichtbare Radio-Buttons */
+
+input[type="radio"] {
+    display: none;
+}
+
+/* Style für Labels von Radio-Buttons */
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+/* Style für aktivierte Radio-Buttons */
+
+input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style für  Dateiauswahl-Labels */
+
+.custom-file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+/* Style für  Dateiauswahl beim Hover-Effekt */
+
+.custom-file-label:hover {
+    background-color: #007bff;
+    color: #fff;
+}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angriffspfad Modellierung</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png"> <!-- Quelle: https://www.flaticon.com/free-icon/site-map_4116447 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Tool zur Modellierung eines Angriffspfades</h1>
+<div class="nav-bar">
+    <a onclick="showSection('add-node-section')">Knoten hinzufügen</a>
+    <a onclick="showSection('edit-node-section')">Knoten bearbeiten</a>
+    <a onclick="showSection('delete-node-section')">Knoten löschen</a>
+    <a onclick="showSection('view-nodes-section')">Knoten Übersicht</a>
+    <a onclick="showSection('add-edge-section')">Kante hinzufügen</a>
+    <a onclick="showSection('edit-edge-section')">Kante bearbeiten</a>
+    <a onclick="showSection('delete-edge-section')">Kante löschen</a>
+    <a onclick="showSection('save-project-section')">Projekt speichern</a>
+    <a onclick="showSection('load-project-section')">Projekt laden</a>
+    <a onclick="showSection('export-section')">Export</a>
+    <a onclick="showSection('help-section')">Hilfe</a>
+</div>
+
+
+
+<div id="messages-section" class="section">
+    <h2>Hinweise</h2>
+    <label class="switch">
+        <input type="checkbox" id="toggle-info-messages">
+        <span class="slider round"></span>
+    </label>
+    <span class="toggle-label">Hinweise anzeigen</span>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="messages">
+        {% for category, message in messages %}
+        <li class="{{ category }}" data-category="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<div id="help-section" class="section">
+    <h2>Hilfe</h2>
+    <form action="{{ url_for('view_help') }}" method="get" target="_blank">
+    <button type="submit">Benutzerdokumentation öffnen</button>
+</form>
+</div>
+
+<div id="edit-edge-section" class="section">
+    <h2>Kante bearbeiten</h2>
+    <form action="/edit_edge" method="POST">
+        <label for="edit_edge_parent">Vaterknoten auswählen:</label> <br>
+        <select name="parent" id="edit_edge_parent" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select> <br>
+        <label for="edit_edge_child">Kindknoten auswählen:</label> <br>
+        <select name="child" id="edit_edge_child" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select>   <br>
+        <label for="edit_edge_probability">Neue Wahrscheinlichkeit definieren:</label> <br>
+        <input type="text" name="probability" id="edit_edge_probability" placeholder="0,4" required>
+        <button type="submit">Wahrscheinlichkeit der Kante bearbeiten</button>
+    </form>
+</div>
+
+<div id="view-nodes-section" class="section active">
+        <h2>Knoten Übersicht</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Attribute</th>
+            </tr>
+            {% for node in nodes %}
+            <tr>
+                <td>{{ node.name }}</td>
+                <td>
+                    <ul>
+                        {% for key, value in node.attributes.items() %}
+                        <li>{{ key }}: {{ value.value }} (Display in Tree: {{ value.display_in_tree }})</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+<div id="edit-node-section" class="section">
+    <h2>Knoten bearbeiten</h2>
+    <form action="/edit_node" method="POST" onsubmit="return validateEditForm()">
+        <label for="edit_node_id">Zu bearbeiteten Knoten auswählen:</label> <br>
+<select name="node_id" id="edit_node_id" onchange="loadNodeAttributes(this.value)">
+    {% for node in nodes %}
+    <option value="{{ node.id }}">{{ node.name }}</option>
+    {% endfor %}
+</select> <br>
+        <label>Neuer Name:</label> <br>
+        <input type="text" name="new_name" placeholder="Testnode2">
+       <!-- <input type="text" name="new_probability" placeholder="Neue Wahrscheinlichkeit"> -->
+         <label>Vaterknoten ändern:</label> <br>
+        <select name="new_parent">
+            <option>Keine Änderung</option>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Verknüpfungstyp ändern:</label> <br>
+        <input id="or" type="radio" name="new_and_or" value="or">
+        <label for="or">OR</label>
+        <input id="and" type="radio" name="new_and_or" value="and">
+        <label for="and">AND</label>
+        <input type="text" name="new_group" placeholder="Testgruppe" disabled>
+        <h4>Existierende AND-Gruppen:</h4>
+        <p> {% for group in groups %}
+        {{ group }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+        </p>
+        <div id="attributes-section">
+            <h3>Attribute bearbeiten</h3>
+            <div id="attributes-container">
+                <div class="attribute-pair">
+                    <!-- <input type="text" name="edit_attribute_name[]" placeholder="Attribut Name">
+<input type="text" name="edit_attribute_value[]" placeholder="Attribut Wert">
+<input type="hidden" name="display_in_tree[]" value="false">
+<input type="checkbox" name="display_in_tree[]" value="true"> Im Baum anzeigen -->
+                </div>
+            </div>
+            <button type="button" onclick="addAttributeField()">weiteres Attribut hinzufügen</button>
+        </div><br>
+
+        <button type="submit">Knoten bearbeiten</button>
+    </form>
+</div>
+
+<div id="delete-edge-section" class="section">
+    <h2>Kante löschen</h2>
+    <form action="/delete_edge" method="POST">
+        <label>Vaterknoten auswählen:</label> <br>
+        <select name="parent" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select> <br>
+        <label>Kindknoten auswählen:</label> <br>
+        <select name="child" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select>   <br>
+        <button type="submit">Kante löschen</button>
+    </form>
+</div>
+
+<div id="add-node-section" class="section">
+    <h2>Kante hinzufügen</h2>
+    <form action="/add_node" method="POST" onsubmit="return validateForm()">
+        <label>Knotenname:</label>
+        <input type="text" name="name" placeholder="Beispielnode" required>
+        <label>Wahrscheinlichkeit zum Knoten:</label>
+        <input type="text" name="probability" placeholder="0,5" required>
+        <label>Auswahl des Vaterknotens:</label> <br>
+        <select name="parent_id" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select> <br>
+        <label>Verknüfungstyp:</label> <br>
+        <input id="or_add" type="radio" name="and_or" value="or" checked>
+        <label for="or_add">OR</label>
+        <input id="and_add" type="radio" name="and_or" value="and">
+        <label for="and_add">AND</label> <br> <br>
+        <label>Name der AND Verknüpfung:</label>
+        <input type="text" name="group" placeholder="Testgruppe" disabled>
+        <div id="existing-groups">
+<h4>Bereits erstellte AND-Verknüpfungen: </h4>
+<p>
+    {% for group in groups %}
+    {{ group }}{% if not loop.last %}, {% endif %}
+    {% endfor %}
+</p>
+</div>
+        <div id="add-attributes-section">
+            <h3>Attribute hinzufügen</h3>
+            <div id="add-attributes-container">
+                <div class="attribute-pair">
+                    <!-- <input type="text" name="attribute_name[]" placeholder="Attribut Name">
+<input type="text" name="attribute_value[]" placeholder="Attribut Wert">
+<input type="hidden" name="display_in_tree[]" value="false">
+<input type="checkbox" name="display_in_tree[]" value="true"> Im Baum anzeigen -->
+                </div>
+            </div>
+            <button type="button" onclick="addAttribute()">Weiteres Attribut hinzufügen</button>
+        </div>
+        <br>
+        <button type="submit">Node hinzufügen</button>
+    </form>
+</div>
+
+<div id="add-edge-section" class="section">
+    <h2>Kante hinzufügen</h2>
+    <form action="/add_edge" method="POST">
+        <label>Vaterknoten auswählen:</label> <br>
+        <select name="parent" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select> <br>
+        <label>Kindknoten auswählen:</label> <br>
+        <select name="child" required>
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select> <br>
+        <label>Wahrscheinlichkeit der Kante definieren:</label> <br>
+        <input id="probability" type="text" name="probability" placeholder="0,5" required>
+        <button type="submit">Kante hinzufügen</button>
+    </form>
+</div>
+
+<div id="delete-node-section" class="section">
+    <h2>Knoten löschen</h2>
+    <form action="/delete_node" method="POST">
+        <label for="node_id">Zu löschenden Knoten auswählen:</label> <br>
+        <select name="node_id" id="node_id">
+            {% for node in nodes %}
+            <option value="{{ node.id }}">{{ node.name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Löschen</button>
+    </form>
+</div>
+
+<div id="export-section" class="section">
+    <h2>Export</h2>
+    <h3>Angriffspfad exportieren</h3>
+    <form action="/export_dot" method="POST">
+        <label for="export_format">Wähle das Exportformat:</label>
+        <select name="export_format" id="export_format">
+            <option value="pdf">PDF</option>
+            <option value="svg">SVG</option>
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="json">JSON</option>
+        </select>
+        <button type="submit">Exportieren</button>
+    </form>
+    <h3>Knoten Übersicht exportieren</h3>
+    <form action="/export_nodes" method="GET">
+        <button type="submit">Knoten Übersicht als CSV exportieren</button>
+    </form> <br>
+    <form action="/export_nodes_pdf" method="GET">
+    <button type="submit">Knoten Übersicht als PDF exportieren</button>
+</form>
+</div>
+
+<div id="save-project-section" class="section">
+    <h2>Projekt speichern</h2>
+    <form action="{{ url_for('download_json') }}" method="get">
+        <button type="submit">Projekt als JSON Datei herunterladen</button>
+    </form>
+</div>
+
+<div id="load-project-section" class="section">
+    <h2>Projekt laden</h2>
+    <h3>Vorhandenes Projekt laden</h3>
+    <form action="/upload_json" method="POST" enctype="multipart/form-data" onsubmit="return confirmUpload();">
+       <input type="file" name="file" accept=".json" id="file-input" required style="display: none;">
+        <label for="file-input" class="custom-file-label">Datei auswählen</label>
+        <button type="submit">Hochladen</button>
+        <h3>Leeres Projekt laden</h3>
+    </form>
+    <form action="/new_project" method="POST" onsubmit="return confirmNewProject();">
+    <button type="submit">Neues leeres Projekt anlegen</button>
+</form>
+</div>
+
+<div id="attack-tree-section" class="section">
+    <h2>Angriffspfad Vorschau</h2>
+    <a id="attack-tree-link" href="{{ url_for('static', filename='attack_tree.svg') }}" target="_blank">
+        <img id="attack-tree-img" src="{{ url_for('static', filename='attack_tree.svg') }}" alt="Attack Tree">
+    </a>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

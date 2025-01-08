@@ -1,0 +1,295 @@
+{
+    "nodes": [
+        {
+            "id": "e373b305-49f6-4594-a2d5-aa8c0e5e1851",
+            "name": "Node",
+            "parent": "",
+            "attributes": {}
+        },
+        {
+            "id": "97ae38bc-4f8b-47fa-98aa-dc42f1e52bfb",
+            "name": "Aaron",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "OS": {
+                    "value": "Windows",
+                    "display_in_tree": "true"
+                },
+                "sadf": {
+                    "value": "sdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "a4978918-fb3a-42f1-afba-beaef9c4e521",
+            "name": "Detlef",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sdf": {
+                    "value": "sdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "85b186cc-45cc-4e05-a44c-484f5f3d96e0",
+            "name": "Dietram",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "asdfsdf": {
+                    "value": "sadfasdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "596eac6d-db2e-402b-89d0-9fdc2ded63c1",
+            "name": "Eike",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sdf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "58b00d45-5ae7-41dd-98c3-b83e29427a85",
+            "name": "Justus",
+            "color": "black",
+            "group": "Just",
+            "attributes": {}
+        },
+        {
+            "id": "e983b196-60f7-4eac-bf27-9666ba548a12",
+            "name": "Leonhardt",
+            "color": "black",
+            "group": "Just",
+            "attributes": {
+                "sdf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                },
+                "asdf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                },
+                "asdfsdf": {
+                    "value": "asdfasdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "14695da4-ba04-49af-aeeb-0e54aba2e414",
+            "name": "Seppl",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sdf": {
+                    "value": "sdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "e3e6d992-0dff-4976-bc24-79cb2bafc33a",
+            "name": "Siegenot",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sdf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "e0a993f5-1e95-42a4-9fa0-e0a3215d2d68",
+            "name": "Stefan",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sadfasdf": {
+                    "value": "asdfasdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "b283e2f5-a342-4ad3-93c0-1dbf775e89d3",
+            "name": " Xaver",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sadf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "3663dd37-8ae4-44c6-8b09-e840fcb817b6",
+            "name": "Wilbrand",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "adsf": {
+                    "value": "dsaf",
+                    "display_in_tree": "false"
+                },
+                "sdaf": {
+                    "value": "asf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "6f7a75f3-4b9b-488f-bb8c-c0f0a7571582",
+            "name": "Immanuel",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "sdaf": {
+                    "value": "sdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "44c1ff13-9723-43fc-8545-d4102fcd6b02",
+            "name": "Jens",
+            "color": "black",
+            "group": null,
+            "attributes": {
+                "dsf": {
+                    "value": "asdf",
+                    "display_in_tree": "false"
+                }
+            }
+        },
+        {
+            "id": "e6e84890-656c-443b-90b2-5c58590a87e0",
+            "name": "Guido",
+            "color": "black",
+            "group": "Name",
+            "attributes": {}
+        },
+        {
+            "id": "a5538644-b2b0-4a3d-ad05-28d8b994f81e",
+            "name": "Hieronymus",
+            "color": "black",
+            "group": "Name",
+            "attributes": {}
+        }
+    ],
+    "edges": [
+        {
+            "parent": "e373b305-49f6-4594-a2d5-aa8c0e5e1851",
+            "child": "97ae38bc-4f8b-47fa-98aa-dc42f1e52bfb",
+            "probability": "0,2",
+            "color": "black"
+        },
+        {
+            "parent": "e373b305-49f6-4594-a2d5-aa8c0e5e1851",
+            "child": "a4978918-fb3a-42f1-afba-beaef9c4e521",
+            "probability": "0,2",
+            "color": "black"
+        },
+        {
+            "parent": "e373b305-49f6-4594-a2d5-aa8c0e5e1851",
+            "child": "85b186cc-45cc-4e05-a44c-484f5f3d96e0",
+            "probability": "0,3",
+            "color": "black"
+        },
+        {
+            "parent": "e373b305-49f6-4594-a2d5-aa8c0e5e1851",
+            "child": "596eac6d-db2e-402b-89d0-9fdc2ded63c1",
+            "probability": "0,3",
+            "color": "black"
+        },
+        {
+            "parent": "97ae38bc-4f8b-47fa-98aa-dc42f1e52bfb",
+            "child": "58b00d45-5ae7-41dd-98c3-b83e29427a85",
+            "probability": "0,1",
+            "color": "black"
+        },
+        {
+            "parent": "97ae38bc-4f8b-47fa-98aa-dc42f1e52bfb",
+            "child": "e983b196-60f7-4eac-bf27-9666ba548a12",
+            "probability": "0,2",
+            "color": "black"
+        },
+        {
+            "parent": "596eac6d-db2e-402b-89d0-9fdc2ded63c1",
+            "child": "14695da4-ba04-49af-aeeb-0e54aba2e414",
+            "probability": "1",
+            "color": "black"
+        },
+        {
+            "parent": "14695da4-ba04-49af-aeeb-0e54aba2e414",
+            "child": "e3e6d992-0dff-4976-bc24-79cb2bafc33a",
+            "probability": "0,2",
+            "color": "black"
+        },
+        {
+            "parent": "14695da4-ba04-49af-aeeb-0e54aba2e414",
+            "child": "e0a993f5-1e95-42a4-9fa0-e0a3215d2d68",
+            "probability": "0,5",
+            "color": "black"
+        },
+        {
+            "parent": "14695da4-ba04-49af-aeeb-0e54aba2e414",
+            "child": "b283e2f5-a342-4ad3-93c0-1dbf775e89d3",
+            "probability": "0,1",
+            "color": "black"
+        },
+        {
+            "parent": "85b186cc-45cc-4e05-a44c-484f5f3d96e0",
+            "child": "e3e6d992-0dff-4976-bc24-79cb2bafc33a",
+            "probability": "0,5",
+            "color": "black"
+        },
+        {
+            "parent": "e983b196-60f7-4eac-bf27-9666ba548a12",
+            "child": "3663dd37-8ae4-44c6-8b09-e840fcb817b6",
+            "probability": "0,2",
+            "color": "black"
+        },
+        {
+            "parent": "3663dd37-8ae4-44c6-8b09-e840fcb817b6",
+            "child": "6f7a75f3-4b9b-488f-bb8c-c0f0a7571582",
+            "probability": "0,5",
+            "color": "black"
+        },
+        {
+            "parent": "3663dd37-8ae4-44c6-8b09-e840fcb817b6",
+            "child": "44c1ff13-9723-43fc-8545-d4102fcd6b02",
+            "probability": "0,4",
+            "color": "black"
+        },
+        {
+            "parent": "44c1ff13-9723-43fc-8545-d4102fcd6b02",
+            "child": "e6e84890-656c-443b-90b2-5c58590a87e0",
+            "probability": "0,1",
+            "color": "black"
+        },
+        {
+            "parent": "44c1ff13-9723-43fc-8545-d4102fcd6b02",
+            "child": "a5538644-b2b0-4a3d-ad05-28d8b994f81e",
+            "probability": "0,1",
+            "color": "black"
+        },
+        {
+            "parent": "b283e2f5-a342-4ad3-93c0-1dbf775e89d3",
+            "child": "44c1ff13-9723-43fc-8545-d4102fcd6b02",
+            "probability": "0,5",
+            "color": "black"
+        }
+    ]
+}
